@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 // RPGコマンドバトルゲーム
 // Author: （あなたの名前）
 // プレイヤーが武器を選び、ランダムな敵と戦うターン制バトルゲームです。
@@ -58,6 +59,10 @@ public class Main {
         System.out.println("2：ゲーム終了");
         System.out.print("数字を入力してください：");
         int menuChoice = scanner.nextInt();
+        while (menuChoice < 1 || menuChoice > 2) {
+            System.out.println("無効な番号です。もう一度選んでください（１～２）：");
+            menuChoice = scanner.nextInt();
+        }
 
         if (menuChoice == 1) {
             System.out.println("ゲームスタート！");
@@ -111,6 +116,10 @@ public class Main {
         // 武器を選択して装備する
         System.out.println("使う武器を選んでください（１～３）：");
         int weaponChoice = scanner.nextInt();
+        while (weaponChoice < 1 || weaponChoice > 3) {
+            System.out.println("無効な番号です。もう一度選んでください（１～３）：");
+            weaponChoice = scanner.nextInt();
+        }
         Weapon playerWeapon = weaponOptions.get(weaponChoice - 1);
         System.out.println("あなたは『" + playerWeapon.name + "』を装備した！");
 
@@ -127,6 +136,10 @@ public class Main {
             System.out.println((i + 1) + "：" + enemies[i].name + "（HP：" + enemies[i].hp + "/攻撃力：" + enemies[i].attack + "）");
         }
         int enemyChoice = scanner.nextInt();
+        while (enemyChoice < 1 || enemyChoice > enemies.length) {
+            System.out.println("無効な番号です。もう一度選んでください（１～" + enemies.length + "）：");
+            enemyChoice = scanner.nextInt();
+        }
         Enemy enemy = enemies[enemyChoice - 1];
 
         System.out.println("--------------------------------");
@@ -161,6 +174,10 @@ public class Main {
                 System.out.println("--------------------------------");
 
                 int command = scanner.nextInt();
+                while (command < 1 || command > 3) {
+                    System.out.println("無効な番号です。もう一度選んでください（１～３）：");
+                    command = scanner.nextInt();
+                }
 
                 if (command == 1){
                     System.out.println(player.name + "のこうげき！");
@@ -243,6 +260,10 @@ public class Main {
                     System.out.println("３：何も受け取らずに次へ進む");
                     // 勝利報酬選択（武器強化 or ガチャ再抽選 or 何も選ばない）
                     int reward = scanner.nextInt();
+                    while (reward < 1 || reward > 3) {
+                        System.out.println("無効な番号です。もう一度選んでください（１～３）：");
+                        reward = scanner.nextInt();
+                    }
 
                     if (reward == 1){
                         playerWeapon.attackBonus += 3;
@@ -259,6 +280,10 @@ public class Main {
                     if (hasRerollTicket){
                         System.out.println("ガチャ再抽選チケットを使いますか？（１：はい  ２：いいえ）");
                         int rerollChoice = scanner.nextInt();
+                        while (rerollChoice < 1 || rerollChoice > 2) {
+                            System.out.println("無効な番号です。もう一度選んでください（１または２）：");
+                            rerollChoice = scanner.nextInt();
+                        }
                         if (rerollChoice == 1){
                             // ガチャ再抽選の処理
                             System.out.println("===再抽選！新しい武器を引き直します===");
@@ -278,6 +303,10 @@ public class Main {
 
                             System.out.println("使う武器を選んでください（１～３）：");
                             weaponChoice = scanner.nextInt();
+                            while (weaponChoice < 1 || weaponChoice > 3) {
+                                System.out.println("無効な番号です。もう一度選んでください（１～３）：");
+                                weaponChoice = scanner.nextInt();
+                            }
                             playerWeapon = weaponOptions.get(weaponChoice - 1);
                             System.out.println("あなたは新たに『" + playerWeapon.name + "』を装備した！");
 
@@ -289,6 +318,10 @@ public class Main {
                     // もう一度戦うか選択
                     System.out.println("もう一度戦いますか？（１：はい  ２：いいえ）");
                     int again = scanner.nextInt();
+                    while (again < 1 || again > 2) {
+                        System.out.println("無効な番号です。もう一度選んでください（１または２）：");
+                        again = scanner.nextInt();
+                    }
                     if (again == 1){
                         // プレイヤーHP/MP回復処理
                         int hpRecovery = (int)(player.maxHp * 0.5);
@@ -321,6 +354,10 @@ public class Main {
                             System.out.println((i + 1) + "：" + enemies[i].name + "（HP：" + enemies[i].hp + "/攻撃力：" + enemies[i].attack + "）");
                         }
                         enemyChoice = scanner.nextInt();
+                        while (enemyChoice < 1 || enemyChoice > enemies.length) {
+                            System.out.println("無効な番号です。もう一度選んでください（１～" + enemies.length + "）：");
+                            enemyChoice = scanner.nextInt();
+                        }
                         enemy = enemies[enemyChoice - 1];
 
                         System.out.println("--------------------------------");

@@ -1,5 +1,7 @@
 import java.util.Random;
 
+// プレイヤーキャラクターのクラス
+// 名前、HP、MP、攻撃力、クリティカル率、状態異常などを管理する
 class Player {
   String name;
   int hp;
@@ -14,7 +16,7 @@ class Player {
 
   Random random = new Random();
 
-  // コンストラクタ（初期化するやつ）
+  // プレイヤーの初期ステータスを設定するコンストラクタ
   Player(String name, int hp, int mp, int attack, int skillCost, int criticalRate) {
       this.name = name;
       this.hp = hp;
@@ -29,6 +31,7 @@ class Player {
   }
 
 
+  // HPを回復する
   void heal() {
     this.hp += 20;
     if (this.hp > this.maxHp){
@@ -37,6 +40,7 @@ class Player {
     System.out.println(name + "のHPが20回復した！（現在のHP：" + hp + "）");
   }
 
+  // 武器を使ってスキル攻撃を行う（MP消費）
   int useSkill(Weapon weapon) {
     if (this.mp >= this.skillCost){
       this.mp -= this.skillCost;
@@ -50,6 +54,7 @@ class Player {
     }
   }
 
+  // 毒ダメージを受ける処理（毒状態ならダメージ＋ターン減少）
   boolean sufferPoison() {
     if (this.isPoisoned){
       this.hp -= 5;
@@ -67,6 +72,7 @@ class Player {
     return false;
   }
 
+  // 通常攻撃を行う（クリティカル判定あり）
   int attack(Weapon weapon){
     int damage = (this.attack + weapon.getTotalAttack()) + random.nextInt(7) - 3;
     

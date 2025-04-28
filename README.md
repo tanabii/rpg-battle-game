@@ -46,3 +46,4 @@ Java標準ライブラリ（Random、Scanner、ArrayList）
 
 
 作者
+D.T.
